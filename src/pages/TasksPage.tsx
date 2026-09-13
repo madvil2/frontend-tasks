@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import {
+  DeleteTaskDialog,
   type Task,
   TaskFormDialog,
   type TaskInput,
@@ -20,10 +21,29 @@ export function TasksPage() {
 }
 
 function TasksView() {
-  const { tasks, addTask, updateTask } = useTasks()
+  const { tasks, addTask, updateTask, removeTask } = useTasks()
   const [formOpen, setFormOpen] = useState(false)
   const [editing, setEditing] = useState<Task | null>(null)
+  const [deleting, setDeleting] = useState<Task | null>(null)
+  const [announcement, setAnnouncement] = useState('')
   const addButtonRef = useRef<HTMLButtonElement>(null)
+  const focusAddAfterClose = useRef(false)
+
+  useEffect(() => {
+    if (deleting === null && focusAddAfterClose.current) {
+      focusAddAfterClose.current = false
+      addButtonRef.current?.focus()
+    }
+  }, [deleting])
+
+  function confirmDelete() {
+    if (!deleting) return
+    removeTask(deleting.id)
+    // Include the title so a second deletion changes the text and is announced again.
+    setAnnouncement(`Task "${deleting.title}" deleted`)
+    focusAddAfterClose.current = true
+    setDeleting(null)
+  }
 
   function openCreate() {
     setEditing(null)
@@ -56,7 +76,7 @@ function TasksView() {
       {tasks.length === 0 ? (
         <p className={styles.empty}>No tasks yet. Use “Add task” to create the first one.</p>
       ) : (
-        <TaskList tasks={tasks} onEdit={openEdit} onDelete={() => {}} />
+        <TaskList tasks={tasks} onEdit={openEdit} onDelete={setDeleting} />
       )}
 
       <TaskFormDialog
@@ -65,6 +85,14 @@ function TasksView() {
         onSubmit={handleSubmit}
         onClose={() => setFormOpen(false)}
       />
+      <DeleteTaskDialog
+        task={deleting}
+        onConfirm={confirmDelete}
+        onClose={() => setDeleting(null)}
+      />
+      <p className="sr-only" role="status">
+        {announcement}
+      </p>
     </main>
   )
 }

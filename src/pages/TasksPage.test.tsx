@@ -65,4 +65,31 @@ describe('TasksPage', () => {
     renderPage()
     expect(screen.getByRole('heading', { name: 'Persist me' })).toBeInTheDocument()
   })
+
+  it('asks for confirmation before deleting and cancel keeps the task', async () => {
+    const user = userEvent.setup()
+    renderPage()
+    await createTask(user, 'Buy milk')
+
+    await user.click(screen.getByRole('button', { name: 'Delete "Buy milk"' }))
+    const dialog = screen.getByRole('alertdialog')
+    expect(within(dialog).getByText(/delete "buy milk"\?/i)).toBeInTheDocument()
+
+    await user.click(within(dialog).getByRole('button', { name: 'Cancel' }))
+    expect(screen.getByRole('heading', { name: 'Buy milk' })).toBeInTheDocument()
+  })
+
+  it('deletes after confirmation, announces it and moves focus to Add task', async () => {
+    const user = userEvent.setup()
+    renderPage()
+    await createTask(user, 'Buy milk')
+
+    await user.click(screen.getByRole('button', { name: 'Delete "Buy milk"' }))
+    await user.click(screen.getByRole('button', { name: 'Delete' }))
+
+    expect(screen.queryByRole('heading', { name: 'Buy milk' })).not.toBeInTheDocument()
+    expect(screen.getByRole('status')).toHaveTextContent('Task "Buy milk" deleted')
+    expect(screen.getByRole('button', { name: 'Add task' })).toHaveFocus()
+    expect(screen.getByText(/no tasks yet/i)).toBeInTheDocument()
+  })
 })

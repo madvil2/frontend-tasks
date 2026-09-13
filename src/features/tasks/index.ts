@@ -10,5 +10,6 @@ export {
   type TaskStatus,
 } from './model/task'
 export { useTasks } from './model/useTasks'
+export { DeleteTaskDialog } from './ui/DeleteTaskDialog'
 export { TaskFormDialog } from './ui/TaskFormDialog'
 export { TaskList } from './ui/TaskList'
