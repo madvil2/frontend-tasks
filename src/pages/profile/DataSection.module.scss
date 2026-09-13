@@ -1,0 +1,21 @@
+@use 'breakpoints' as bp;
+
+.section {
+  min-width: 0;
+}
+
+.title {
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-brand);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-heading);
+  overflow-wrap: anywhere;
+  hyphens: auto;
+
+  @include bp.up(tablet) {
+    margin-bottom: var(--space-4);
+    font-size: 22px;
+  }
+}
