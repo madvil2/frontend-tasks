@@ -92,3 +92,13 @@ export const MaleIcon = (p: IconProps) => (
     <path d="M13.5 10.5L20 4M14.5 4H20v5.5" />
   </Svg>
 )
+
+export function Logo({ className }: { className?: string }) {
+  return (
+    <span className={className}>
+      <span data-part="vex">VEX</span>
+      <span data-part="cash">CASH</span>
+      <sup data-part="mark">®</sup>
+    </span>
+  )
+}

@@ -1,0 +1,124 @@
+@use 'breakpoints' as bp;
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    'brand brand'
+    'greeting status';
+  border-bottom: 1px solid var(--color-border);
+
+  @include bp.up(desktop) {
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'brand greeting status';
+  }
+
+  @include bp.up(wide) {
+    grid-column: 1 / -1;
+  }
+}
+
+.brand {
+  grid-area: brand;
+  // Brand owns the whole first row below 992px; the toggle overlaps its right end.
+  padding: var(--space-3) 72px var(--space-3) var(--space-5);
+
+  @include bp.up(desktop) {
+    padding-right: var(--space-5);
+    border-right: 1px solid var(--color-border);
+  }
+}
+
+.logo {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 30px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  line-height: 1;
+
+  [data-part='vex'] {
+    color: var(--color-brand);
+  }
+
+  [data-part='cash'] {
+    color: #6f6f6f;
+  }
+
+  [data-part='mark'] {
+    margin-left: 1px;
+    font-size: 0.4em;
+    font-style: normal;
+  }
+}
+
+.tagline {
+  margin-top: var(--space-1);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.toggle {
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: end;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-right: var(--space-3);
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.greeting,
+.status {
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  min-width: 0;
+
+  @include bp.up(desktop) {
+    border-top: 0;
+  }
+}
+
+.greeting {
+  grid-area: greeting;
+  border-right: 1px solid var(--color-border);
+}
+
+.status {
+  grid-area: status;
+  text-align: right;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.labelLong {
+  display: none;
+
+  @include bp.up(desktop) {
+    display: inline;
+  }
+}
+
+.value {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.statusValue {
+  color: var(--color-success);
+}

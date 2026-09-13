@@ -1,0 +1,40 @@
+@use 'breakpoints' as bp;
+
+// Below 992px the nav shares the grid cell with <main> and overlays it.
+.nav {
+  grid-row: 2;
+  grid-column: 1;
+  position: relative;
+  z-index: 1;
+  align-self: start;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+
+  &[hidden] {
+    display: none;
+  }
+
+  @include bp.up(wide) {
+    align-self: stretch;
+    border-bottom: 0;
+    border-right: 1px solid var(--color-border);
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding-bottom: 4px;
+
+  @include bp.up(mobile) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include bp.up(wide) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+    padding-bottom: 0;
+    background: var(--color-border);
+  }
+}

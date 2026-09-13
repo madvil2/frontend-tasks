@@ -1,4 +1,5 @@
 import { createBrowserRouter, type RouteObject } from 'react-router'
+import { CustomerAreaLayout } from '../layouts/customer-area/CustomerAreaLayout'
 import { HomePage } from '../pages/HomePage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { ProfilePage } from '../pages/profile/ProfilePage'
@@ -7,7 +8,11 @@ import { TasksPage } from '../pages/TasksPage'
 export const routes: RouteObject[] = [
   { path: '/', element: <HomePage /> },
   { path: '/tasks', element: <TasksPage /> },
-  { path: '/profile', element: <ProfilePage /> },
+  {
+    path: '/profile',
+    element: <CustomerAreaLayout />,
+    children: [{ index: true, element: <ProfilePage /> }],
+  },
   { path: '*', element: <NotFoundPage /> },
 ]
 
