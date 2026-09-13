@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+// Assignment ranges: ≤567, 568–767, 768–991, 992–1199, ≥1200. Mobile-first, min-width only.
+$breakpoints: (
+  'mobile': 568px,
+  'tablet': 768px,
+  'desktop': 992px,
+  'wide': 1200px,
+);
+
+@mixin up($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "Unknown breakpoint `#{$name}`";
+  }
+
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}

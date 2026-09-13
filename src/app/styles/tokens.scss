@@ -1,0 +1,38 @@
+:root {
+  --font-sans: Roboto, 'Helvetica Neue', Arial, system-ui, sans-serif;
+
+  --color-bg: #fff;
+  --color-surface: #f7f7f7;
+  --color-border: #e3e3e3;
+  --color-text: #333;
+  --color-text-muted: #7a7a7a;
+  --color-heading: #444;
+  --color-brand: #8dc63f;
+  --color-success: #3f7f2a;
+  --color-accent: #1cb5e0;
+  --color-danger: #b42318;
+  --color-focus: #1cb5e0;
+
+  --badge-todo-bg: #eceff3;
+  --badge-todo-text: #3f4a5a;
+  --badge-progress-bg: #dbeafe;
+  --badge-progress-text: #1e40af;
+  --badge-done-bg: #dcfce7;
+  --badge-done-text: #166534;
+  --badge-low-bg: #f1f3f5;
+  --badge-low-text: #3f4a5a;
+  --badge-medium-bg: #fef3c7;
+  --badge-medium-text: #92400e;
+  --badge-high-bg: #fee2e2;
+  --badge-high-text: #991b1b;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --radius: 6px;
+  --sidebar-width: 280px;
+}
