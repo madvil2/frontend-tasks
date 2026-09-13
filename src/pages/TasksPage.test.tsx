@@ -36,7 +36,7 @@ describe('TasksPage', () => {
     renderPage()
     await createTask(user, 'First')
     await createTask(user, 'Second')
-    const headings = screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent)
+    const headings = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent)
     expect(headings).toEqual(['Second', 'First'])
   })
 

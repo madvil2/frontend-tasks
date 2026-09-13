@@ -2,10 +2,10 @@
 
 Two small take-home tasks in one Vite + React app.
 
-| Route      | Task                                                                                   |
-| ---------- | -------------------------------------------------------------------------------------- |
-| `/tasks`   | Task Manager: create, edit and delete tasks, persisted in `localStorage`               |
-| `/profile` | Responsive customer area: navigation and personal-data page across five breakpoints   |
+| Route      | Task                                                                                |
+| ---------- | ----------------------------------------------------------------------------------- |
+| `/tasks`   | Task Manager: create, edit and delete tasks, persisted in `localStorage`            |
+| `/profile` | Responsive customer area: navigation and personal-data page across five breakpoints |
 
 ## Run
 
@@ -25,10 +25,10 @@ React 19, TypeScript, Vite, react-router, SCSS Modules, Biome, Vitest + Testing 
 ## Decisions
 
 - **Structure:** `pages` → `features` / `layouts` / `shared`. `features/tasks` exposes its public API through `index.ts`.
-- **State:** `useReducer` + context. The reducer and the storage layer are pure and unit-tested. On load every stored item is validated; invalid items are dropped instead of wiping the store.
+- **State:** `useReducer` + context. The reducer and the storage layer are pure and unit-tested. On load every stored item is validated; invalid items are dropped instead of wiping the store. Tasks are listed newest first.
 - **Dialogs:** native `<dialog>` (modal focus handling and Esc come from the browser). The create/edit form is uncontrolled, read through `FormData`, and remounted per task via `key`.
 - **Dates:** stored as `YYYY-MM-DD` and parsed as local dates. `new Date('YYYY-MM-DD')` parses as UTC and shifts a day in negative offsets.
-- **Breakpoints:** defined once in `src/app/styles/_breakpoints.scss` and used mobile-first via `@include bp.up(...)`. Below 992px the menu visibility is React state; from 992px up it is always visible.
+- **Breakpoints:** defined once in `src/app/styles/breakpoints.scss` and used mobile-first via `@include bp.up(...)`. Below 992px the menu visibility is React state; from 992px up it is always visible.
 
 ## Assumptions from the mockups
 

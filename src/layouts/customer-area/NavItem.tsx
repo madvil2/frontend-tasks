@@ -15,6 +15,7 @@ export function NavItem({ item, onNavigate }: NavItemProps) {
       {item.label}
     </>
   )
+  // Function-form className keeps react-router from appending its global "active" class.
   return (
     <li className={styles.item}>
       {item.to ? (

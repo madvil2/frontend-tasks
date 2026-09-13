@@ -16,7 +16,7 @@ export function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
   return (
     <li className={styles.card}>
       <div className={styles.header}>
-        <h3 className={styles.title}>{task.title}</h3>
+        <h2 className={styles.title}>{task.title}</h2>
         <div className={styles.badges}>
           <StatusBadge status={task.status} />
           <PriorityBadge priority={task.priority} />

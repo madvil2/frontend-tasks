@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import styles from './HomePage.module.scss'
 
-const tasks = [
+const cards = [
   {
     to: '/tasks',
     title: 'Task Manager',
@@ -22,12 +22,12 @@ export function HomePage() {
       <h1 className={styles.title}>Frontend tasks</h1>
       <p className={styles.lead}>Two take-home tasks in one React app. Pick one:</p>
       <div className={styles.cards}>
-        {tasks.map((task) => (
-          <article key={task.to} className={styles.card}>
-            <h2 className={styles.cardTitle}>{task.title}</h2>
-            <p className={styles.cardText}>{task.text}</p>
-            <Link to={task.to} className={styles.cardLink}>
-              {task.link}
+        {cards.map((card) => (
+          <article key={card.to} className={styles.card}>
+            <h2 className={styles.cardTitle}>{card.title}</h2>
+            <p className={styles.cardText}>{card.text}</p>
+            <Link to={card.to} className={styles.cardLink}>
+              {card.link}
             </Link>
           </article>
         ))}
