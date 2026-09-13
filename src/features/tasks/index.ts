@@ -11,3 +11,4 @@ export {
 } from './model/task'
 export { useTasks } from './model/useTasks'
 export { TaskFormDialog } from './ui/TaskFormDialog'
+export { TaskList } from './ui/TaskList'

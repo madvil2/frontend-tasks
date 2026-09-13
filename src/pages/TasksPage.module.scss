@@ -1,0 +1,39 @@
+@use 'breakpoints' as bp;
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4);
+
+  @include bp.up(tablet) {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.empty {
+  padding: var(--space-6) var(--space-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--color-text-muted);
+}

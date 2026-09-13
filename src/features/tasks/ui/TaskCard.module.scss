@@ -1,0 +1,57 @@
+.card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.description {
+  color: var(--color-text-muted);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.due {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.overdue {
+  font-weight: 500;
+  color: var(--color-danger);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-1);
+}
