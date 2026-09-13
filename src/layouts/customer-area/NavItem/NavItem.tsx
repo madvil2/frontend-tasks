@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router'
+import type { NavItemData } from '../navItems'
 import styles from './NavItem.module.scss'
-import type { NavItemData } from './navItems'
 
 interface NavItemProps {
   item: NavItemData

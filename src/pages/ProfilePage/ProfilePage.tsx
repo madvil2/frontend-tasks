@@ -1,4 +1,4 @@
-import { DataSection } from './DataSection'
+import { DataSection } from './DataSection/DataSection'
 import styles from './ProfilePage.module.scss'
 import { profileSections } from './profile.data'
 

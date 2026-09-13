@@ -1,6 +1,6 @@
-import { MaleIcon } from '../../layouts/customer-area/icons'
+import { MaleIcon } from '../../../layouts/customer-area/icons'
+import type { ProfileRow } from '../profile.data'
 import styles from './DataGroup.module.scss'
-import type { ProfileRow } from './profile.data'
 
 export function DataGroup({ rows }: { rows: ProfileRow[] }) {
   return (

@@ -1,5 +1,5 @@
-import type { Task } from '../model/task'
-import { TaskCard } from './TaskCard'
+import type { Task } from '../../model/task'
+import { TaskCard } from '../TaskCard/TaskCard'
 import styles from './TaskList.module.scss'
 
 interface TaskListProps {

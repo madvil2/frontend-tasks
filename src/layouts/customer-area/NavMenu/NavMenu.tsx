@@ -1,6 +1,6 @@
-import { NavItem } from './NavItem'
+import { NavItem } from '../NavItem/NavItem'
+import { navItems } from '../navItems'
 import styles from './NavMenu.module.scss'
-import { navItems } from './navItems'
 
 interface NavMenuProps {
   id: string

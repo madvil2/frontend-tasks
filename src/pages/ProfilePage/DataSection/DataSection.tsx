@@ -1,6 +1,6 @@
-import { DataGroup } from './DataGroup'
+import { DataGroup } from '../DataGroup/DataGroup'
+import type { ProfileSection } from '../profile.data'
 import styles from './DataSection.module.scss'
-import type { ProfileSection } from './profile.data'
 
 export function DataSection({ section }: { section: ProfileSection }) {
   const headingId = `${section.id}-heading`

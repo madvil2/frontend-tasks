@@ -1,5 +1,5 @@
+import { BurgerIcon, CloseIcon, Logo } from '../icons'
 import styles from './Header.module.scss'
-import { BurgerIcon, CloseIcon, Logo } from './icons'
 
 interface HeaderProps {
   showToggle: boolean

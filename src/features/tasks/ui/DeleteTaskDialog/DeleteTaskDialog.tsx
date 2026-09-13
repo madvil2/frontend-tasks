@@ -1,7 +1,7 @@
 import { useId } from 'react'
-import { Button } from '../../../shared/ui/Button'
-import { Dialog } from '../../../shared/ui/Dialog'
-import type { Task } from '../model/task'
+import { Button } from '../../../../shared/ui/Button/Button'
+import { Dialog } from '../../../../shared/ui/Dialog/Dialog'
+import type { Task } from '../../model/task'
 import styles from './DeleteTaskDialog.module.scss'
 
 interface DeleteTaskDialogProps {

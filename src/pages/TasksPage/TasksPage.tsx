@@ -8,8 +8,8 @@ import {
   TaskList,
   TasksProvider,
   useTasks,
-} from '../features/tasks'
-import { Button } from '../shared/ui/Button'
+} from '../../features/tasks'
+import { Button } from '../../shared/ui/Button/Button'
 import styles from './TasksPage.module.scss'
 
 export function TasksPage() {

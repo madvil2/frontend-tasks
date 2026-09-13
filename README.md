@@ -24,7 +24,7 @@ React 19, TypeScript, Vite, react-router, SCSS Modules, Biome, Vitest + Testing 
 
 ## Decisions
 
-- **Structure:** `pages` → `features` / `layouts` / `shared`. `features/tasks` exposes its public API through `index.ts`.
+- **Structure:** `pages` → `features` / `layouts` / `shared`. `features/tasks` exposes its public API through `index.ts`. Each component sits in its own folder next to its styles and tests.
 - **State:** `useReducer` + context. The reducer and the storage layer are pure and unit-tested. On load every stored item is validated; invalid items are dropped instead of wiping the store. Tasks are listed newest first.
 - **Dialogs:** native `<dialog>` (modal focus handling and Esc come from the browser). The create/edit form is uncontrolled, read through `FormData`, and remounted per task via `key`.
 - **Dates:** stored as `YYYY-MM-DD` and parsed as local dates. `new Date('YYYY-MM-DD')` parses as UTC and shifts a day in negative offsets.

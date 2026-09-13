@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router'
-import { useMediaQuery } from '../../shared/lib/useMediaQuery'
+import { useMediaQuery } from '../../../shared/lib/useMediaQuery'
+import { Header } from '../Header/Header'
+import { NavMenu } from '../NavMenu/NavMenu'
 import styles from './CustomerAreaLayout.module.scss'
-import { Header } from './Header'
-import { NavMenu } from './NavMenu'
 
 const NAV_ID = 'customer-nav'
 
