@@ -22,6 +22,10 @@
   }
 }
 
+.group:last-child .row:last-child {
+  border-bottom: 0;
+}
+
 .label {
   color: var(--color-text-muted);
   overflow-wrap: anywhere;

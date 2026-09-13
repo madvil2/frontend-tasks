@@ -6,12 +6,16 @@
   grid-column: 1;
   position: relative;
   z-index: 1;
-  align-self: start;
+  align-self: stretch;
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 
   &[hidden] {
     display: none;
+  }
+
+  @include bp.up(desktop) {
+    align-self: start;
   }
 
   @include bp.up(wide) {
@@ -27,6 +31,10 @@
   gap: 4px;
   padding-bottom: 4px;
 
+  > :last-child {
+    grid-column: 1 / -1;
+  }
+
   @include bp.up(mobile) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -36,5 +44,9 @@
     gap: 1px;
     padding-bottom: 0;
     background: var(--color-border);
+
+    > :last-child {
+      grid-column: auto;
+    }
   }
 }

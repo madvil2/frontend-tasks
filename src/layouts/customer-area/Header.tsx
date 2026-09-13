@@ -22,7 +22,7 @@ export function Header({ showToggle, menuOpen, onToggleMenu, navId }: HeaderProp
           className={styles.toggle}
           aria-expanded={menuOpen}
           aria-controls={navId}
-          aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+          aria-label="Menü"
           onClick={onToggleMenu}
         >
           {menuOpen ? <CloseIcon width={30} height={30} /> : <BurgerIcon width={30} height={30} />}
