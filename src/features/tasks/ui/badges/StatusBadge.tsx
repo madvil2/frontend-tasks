@@ -1,4 +1,4 @@
-import { STATUS_LABELS, type TaskStatus } from '../../model/task'
+import { STATUS_LABELS, type TaskStatus } from '@/features/tasks/model/task'
 import styles from './badge.module.scss'
 
 export function StatusBadge({ status }: { status: TaskStatus }) {

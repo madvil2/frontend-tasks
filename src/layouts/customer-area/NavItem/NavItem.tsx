@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router'
-import type { NavItemData } from '../navItems'
+import type { NavItemData } from '@/layouts/customer-area/navItems'
 import styles from './NavItem.module.scss'
 
 interface NavItemProps {

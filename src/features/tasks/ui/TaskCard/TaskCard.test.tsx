@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import type { Task } from '../../model/task'
+import type { Task } from '@/features/tasks/model/task'
 import { TaskCard } from './TaskCard'
 
 const task: Task = {

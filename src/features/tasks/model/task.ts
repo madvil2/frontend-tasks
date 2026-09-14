@@ -1,4 +1,4 @@
-import { todayISO } from '../../../shared/lib/date'
+import { todayISO } from '@/shared/lib/date'
 
 export const TASK_STATUSES = ['todo', 'in_progress', 'done'] as const
 export type TaskStatus = (typeof TASK_STATUSES)[number]

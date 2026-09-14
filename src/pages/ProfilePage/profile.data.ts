@@ -1,7 +1,10 @@
+import type { ComponentType, SVGProps } from 'react'
+import { MaleIcon } from '@/shared/ui/icons'
+
 export interface ProfileRow {
   label: string
   value: string
-  icon?: 'male'
+  icon?: ComponentType<SVGProps<SVGSVGElement>>
 }
 
 export interface ProfileSection {
@@ -16,7 +19,7 @@ export const profileSections: readonly ProfileSection[] = [
     id: 'personal',
     title: 'Persönliche Daten',
     groups: [
-      [{ label: 'Anrede', value: 'Herr', icon: 'male' }],
+      [{ label: 'Anrede', value: 'Herr', icon: MaleIcon }],
       [
         { label: 'Vorname', value: 'John' },
         { label: 'Nachname', value: 'Smith' },

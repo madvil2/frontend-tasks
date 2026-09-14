@@ -1,5 +1,5 @@
-import { NavItem } from '../NavItem/NavItem'
-import { navItems } from '../navItems'
+import { NavItem } from '@/layouts/customer-area/NavItem/NavItem'
+import { navItems } from '@/layouts/customer-area/navItems'
 import styles from './NavMenu.module.scss'
 
 interface NavMenuProps {

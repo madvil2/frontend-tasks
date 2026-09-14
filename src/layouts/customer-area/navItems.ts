@@ -7,7 +7,7 @@ import {
   PasswordIcon,
   ReferIcon,
   UserIcon,
-} from './icons'
+} from '@/shared/ui/icons'
 
 export interface NavItemData {
   id: string

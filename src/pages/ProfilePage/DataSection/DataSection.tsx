@@ -1,9 +1,10 @@
-import { DataGroup } from '../DataGroup/DataGroup'
-import type { ProfileSection } from '../profile.data'
+import { useId } from 'react'
+import { DataGroup } from '@/pages/ProfilePage/DataGroup/DataGroup'
+import type { ProfileSection } from '@/pages/ProfilePage/profile.data'
 import styles from './DataSection.module.scss'
 
 export function DataSection({ section }: { section: ProfileSection }) {
-  const headingId = `${section.id}-heading`
+  const headingId = useId()
   return (
     <section className={styles.section} aria-labelledby={headingId}>
       <h2 id={headingId} className={styles.title}>

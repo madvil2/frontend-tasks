@@ -1,6 +1,4 @@
 import { type FormEvent, useId, useRef, useState } from 'react'
-import { Button } from '../../../../shared/ui/Button/Button'
-import { Dialog } from '../../../../shared/ui/Dialog/Dialog'
 import {
   PRIORITY_LABELS,
   STATUS_LABELS,
@@ -10,7 +8,9 @@ import {
   type TaskInput,
   type TaskPriority,
   type TaskStatus,
-} from '../../model/task'
+} from '@/features/tasks/model/task'
+import { Button } from '@/shared/ui/Button/Button'
+import { Dialog } from '@/shared/ui/Dialog/Dialog'
 import styles from './TaskFormDialog.module.scss'
 
 interface TaskFormDialogProps {

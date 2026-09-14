@@ -1,4 +1,5 @@
-import { BurgerIcon, CloseIcon, Logo } from '../icons'
+import { Link } from 'react-router'
+import { BurgerIcon, CloseIcon } from '@/shared/ui/icons'
 import styles from './Header.module.scss'
 
 interface HeaderProps {
@@ -12,7 +13,11 @@ export function Header({ showToggle, menuOpen, onToggleMenu, navId }: HeaderProp
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
-        <Logo className={styles.logo} />
+        <Link to="/" className={styles.logo} aria-label="Vexcash, zur Übersicht">
+          <span className={styles.logoVex}>VEX</span>
+          <span className={styles.logoCash}>CASH</span>
+          <sup className={styles.logoMark}>®</sup>
+        </Link>
         <p className={styles.tagline}>Einfach 60 Tage Geld leihen</p>
       </div>
 

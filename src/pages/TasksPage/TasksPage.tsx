@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
-import type { Task, TaskInput } from '../../features/tasks/model/task'
-import { useTasksState } from '../../features/tasks/model/useTasksState'
-import { DeleteTaskDialog } from '../../features/tasks/ui/DeleteTaskDialog/DeleteTaskDialog'
-import { TaskCard } from '../../features/tasks/ui/TaskCard/TaskCard'
-import { TaskFormDialog } from '../../features/tasks/ui/TaskFormDialog/TaskFormDialog'
-import { Button } from '../../shared/ui/Button/Button'
+import type { Task, TaskInput } from '@/features/tasks/model/task'
+import { useTasksState } from '@/features/tasks/model/useTasksState'
+import { DeleteTaskDialog } from '@/features/tasks/ui/DeleteTaskDialog/DeleteTaskDialog'
+import { TaskCard } from '@/features/tasks/ui/TaskCard/TaskCard'
+import { TaskFormDialog } from '@/features/tasks/ui/TaskFormDialog/TaskFormDialog'
+import { Button } from '@/shared/ui/Button/Button'
 import styles from './TasksPage.module.scss'
 
 export function TasksPage() {

@@ -1,8 +1,8 @@
-import { formatDate } from '../../../../shared/lib/date'
-import { Button } from '../../../../shared/ui/Button/Button'
-import { isOverdue, type Task } from '../../model/task'
-import { PriorityBadge } from '../badges/PriorityBadge'
-import { StatusBadge } from '../badges/StatusBadge'
+import { isOverdue, type Task } from '@/features/tasks/model/task'
+import { PriorityBadge } from '@/features/tasks/ui/badges/PriorityBadge'
+import { StatusBadge } from '@/features/tasks/ui/badges/StatusBadge'
+import { formatDate } from '@/shared/lib/date'
+import { Button } from '@/shared/ui/Button/Button'
 import styles from './TaskCard.module.scss'
 
 interface TaskCardProps {
