@@ -13,18 +13,15 @@ interface TaskCardProps {
 
 export function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
   const overdue = isOverdue(task)
+  const cardClass = task.status === 'done' ? `${styles.card} ${styles.done}` : styles.card
   return (
-    <li className={styles.card}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>{task.title}</h2>
-        <div className={styles.badges}>
-          <StatusBadge status={task.status} />
-          <PriorityBadge priority={task.priority} />
-        </div>
-      </div>
+    <li className={cardClass}>
+      <h2 className={styles.title}>{task.title}</h2>
       {task.description !== '' && <p className={styles.description}>{task.description}</p>}
-      <div className={styles.footer}>
-        <p className={styles.due}>
+      <div className={styles.meta}>
+        <StatusBadge status={task.status} />
+        <PriorityBadge priority={task.priority} />
+        <span className={styles.due}>
           {task.dueDate ? (
             <>
               Due <time dateTime={task.dueDate}>{formatDate(task.dueDate)}</time>
@@ -33,7 +30,7 @@ export function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
           ) : (
             'No due date'
           )}
-        </p>
+        </span>
         <div className={styles.actions}>
           <Button variant="ghost" onClick={() => onEdit(task)} aria-label={`Edit "${task.title}"`}>
             Edit

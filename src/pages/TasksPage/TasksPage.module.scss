@@ -1,25 +1,37 @@
 @use 'breakpoints' as bp;
 
 .page {
-  max-width: 880px;
-  margin: 0 auto;
+  min-height: 100dvh;
   padding: var(--space-5) var(--space-4);
+  background: var(--color-page);
 
   @include bp.up(tablet) {
     padding: var(--space-6) var(--space-5);
   }
 }
 
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back {
   display: inline-block;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+  }
 }
 
 .header {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-3);
   margin-bottom: var(--space-5);
@@ -27,18 +39,35 @@
 
 .title {
   font-size: var(--font-size-3xl);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.count {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
 }
 
 .empty {
   padding: var(--space-6) var(--space-4);
-  border: 1px dashed var(--color-border);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
+  background: var(--color-bg);
   text-align: center;
   color: var(--color-text-muted);
 }
 
+.emptyTitle {
+  margin-bottom: var(--space-1);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
 .list {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }

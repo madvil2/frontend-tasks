@@ -1,18 +1,41 @@
 @use 'sass:list';
 
-$tones: (
-  'todo': (#eceff3, #3f4a5a),
-  'in_progress': (#dbeafe, #1e40af),
-  'done': (#dcfce7, #166534),
-  'low': (#f1f3f5, #3f4a5a),
+$status: (
+  'todo': #9aa3b2,
+  'in_progress': #2563eb,
+  'done': #15803d,
+);
+
+$priority: (
+  'low': (#f1f3f5, #4b5563),
   'medium': (#fef3c7, #92400e),
   'high': (#fee2e2, #991b1b),
 );
 
-.badge {
+// Status: a coloured dot followed by the label.
+.status {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentcolor;
+}
+
+// Priority: a small tinted chip.
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
   padding: 0 var(--space-2);
   border-radius: 999px;
   font-size: var(--font-size-xs);
@@ -20,8 +43,14 @@ $tones: (
   white-space: nowrap;
 }
 
-// One class per status and priority value; looked up dynamically as styles[value].
-@each $name, $colors in $tones {
+// One class per value; looked up dynamically as styles[value].
+@each $name, $color in $status {
+  .#{$name} .dot {
+    color: $color;
+  }
+}
+
+@each $name, $colors in $priority {
   .#{$name} {
     background: list.nth($colors, 1);
     color: list.nth($colors, 2);

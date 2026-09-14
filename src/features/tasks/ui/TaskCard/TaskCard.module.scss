@@ -1,49 +1,65 @@
 .card {
+  position: relative;
   display: grid;
-  gap: var(--space-3);
-  padding: var(--space-4);
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   background: var(--color-bg);
-}
 
-.header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-2) var(--space-4);
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition-property: border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+  }
 }
 
 .title {
-  font-size: var(--font-size-lg);
-  font-weight: 500;
-  overflow-wrap: anywhere;
-}
+  font-size: var(--font-size-md);
 
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+  @media (hover: hover) {
+    padding-right: 132px;
+  }
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+
+  .done & {
+    color: var(--color-text-muted);
+  }
 }
 
 .description {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
   color: var(--color-text-muted);
   white-space: pre-line;
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
-.footer {
+.meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-2) var(--space-3);
+  min-height: 32px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
 .due {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 .overdue {
@@ -51,7 +67,32 @@
   color: var(--color-danger);
 }
 
+// Touch devices: Edit/Delete sit at the end of the meta row. Pointer devices: pinned to the
+// top-right corner and revealed on hover or focus, so the card keeps a calm resting state.
 .actions {
   display: flex;
+  flex: none;
   gap: var(--space-1);
+  margin: 0 calc(-1 * var(--space-2)) 0 auto;
+
+  button {
+    min-height: 32px;
+  }
+
+  @media (hover: hover) {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    margin: 0;
+    opacity: 0;
+
+    .card:hover &,
+    .card:focus-within & {
+      opacity: 1;
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    transition: opacity 150ms ease;
+  }
 }

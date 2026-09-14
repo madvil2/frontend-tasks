@@ -53,40 +53,50 @@ export function TasksPage() {
 
   return (
     <main className={styles.page}>
-      <Link to="/" className={styles.back}>
-        ← Overview
-      </Link>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Task Manager</h1>
-        <Button ref={addButtonRef} variant="primary" onClick={openCreate}>
-          Add task
-        </Button>
+      <div className={styles.container}>
+        <Link to="/" className={styles.back}>
+          ← Overview
+        </Link>
+        <div className={styles.header}>
+          <div>
+            <h1 className={styles.title}>Task Manager</h1>
+            <p className={styles.count}>
+              {tasks.length === 1 ? '1 task' : `${tasks.length} tasks`}
+            </p>
+          </div>
+          <Button ref={addButtonRef} variant="primary" onClick={openCreate}>
+            <span aria-hidden="true">+</span> Add task
+          </Button>
+        </div>
+
+        {tasks.length === 0 ? (
+          <div className={styles.empty}>
+            <p className={styles.emptyTitle}>No tasks yet</p>
+            <p>Use "Add task" to create the first one.</p>
+          </div>
+        ) : (
+          <ul className={styles.list} aria-label="Tasks">
+            {tasks.map((task) => (
+              <TaskCard key={task.id} task={task} onEdit={openEdit} onDelete={setDeleting} />
+            ))}
+          </ul>
+        )}
+
+        <TaskFormDialog
+          open={formOpen}
+          task={editing}
+          onSubmit={handleSubmit}
+          onClose={() => setFormOpen(false)}
+        />
+        <DeleteTaskDialog
+          task={deleting}
+          onConfirm={confirmDelete}
+          onClose={() => setDeleting(null)}
+        />
+        <p className="sr-only" role="status">
+          {announcement}
+        </p>
       </div>
-
-      {tasks.length === 0 ? (
-        <p className={styles.empty}>No tasks yet. Use "Add task" to create the first one.</p>
-      ) : (
-        <ul className={styles.list} aria-label="Tasks">
-          {tasks.map((task) => (
-            <TaskCard key={task.id} task={task} onEdit={openEdit} onDelete={setDeleting} />
-          ))}
-        </ul>
-      )}
-
-      <TaskFormDialog
-        open={formOpen}
-        task={editing}
-        onSubmit={handleSubmit}
-        onClose={() => setFormOpen(false)}
-      />
-      <DeleteTaskDialog
-        task={deleting}
-        onConfirm={confirmDelete}
-        onClose={() => setDeleting(null)}
-      />
-      <p className="sr-only" role="status">
-        {announcement}
-      </p>
     </main>
   )
 }
