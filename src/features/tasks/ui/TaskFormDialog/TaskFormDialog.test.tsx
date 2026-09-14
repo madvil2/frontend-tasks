@@ -78,11 +78,15 @@ describe('TaskFormDialog', () => {
     expect(screen.getByLabelText('Due date')).toHaveValue('2026-09-20')
   })
 
-  it('cancel calls onClose', async () => {
+  it('clears the title error once the user types', async () => {
     const user = userEvent.setup()
-    const onClose = vi.fn()
-    render(<TaskFormDialog open task={null} onSubmit={() => {}} onClose={onClose} />)
-    await user.click(screen.getByRole('button', { name: 'Cancel' }))
-    expect(onClose).toHaveBeenCalled()
+    render(<TaskFormDialog open task={null} onSubmit={() => {}} onClose={() => {}} />)
+
+    await user.click(screen.getByRole('button', { name: 'Save' }))
+    expect(screen.getByText('Title is required.')).toBeInTheDocument()
+
+    await user.type(screen.getByLabelText('Title'), 'B')
+    expect(screen.queryByText('Title is required.')).not.toBeInTheDocument()
+    expect(screen.getByLabelText('Title')).toHaveAttribute('aria-invalid', 'false')
   })
 })

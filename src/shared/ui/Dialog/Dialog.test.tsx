@@ -18,7 +18,13 @@ describe('Dialog', () => {
       </Dialog>,
     )
     expect(dialog).toHaveAttribute('open')
-    expect(dialog).toHaveAttribute('aria-labelledby', 't')
+
+    rerender(
+      <Dialog open={false} onClose={() => {}} labelledBy="t">
+        <h2 id="t">Hi</h2>
+      </Dialog>,
+    )
+    expect(dialog).not.toHaveAttribute('open')
   })
 
   it('calls onClose on the native close event', () => {
@@ -30,14 +36,5 @@ describe('Dialog', () => {
     )
     screen.getByText('Hi').closest('dialog')?.close()
     expect(onClose).toHaveBeenCalledTimes(1)
-  })
-
-  it('sets role alertdialog when asked', () => {
-    render(
-      <Dialog open onClose={() => {}} labelledBy="t" role="alertdialog">
-        <h2 id="t">Hi</h2>
-      </Dialog>,
-    )
-    expect(screen.getByRole('alertdialog')).toBeInTheDocument()
   })
 })

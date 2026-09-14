@@ -22,19 +22,23 @@ export function DeleteTaskDialog({ task, onConfirm, onClose }: DeleteTaskDialogP
       describedBy={textId}
       role="alertdialog"
     >
-      <h2 id={headingId} className={styles.heading}>
-        Delete task
-      </h2>
-      <p id={textId} className={styles.text}>
-        Delete "{task?.title}"? This cannot be undone.
-      </p>
-      <div className={styles.actions}>
-        {/* Cancel comes first so the dialog's initial focus lands on it, not on Delete. */}
-        <Button onClick={onClose}>Cancel</Button>
-        <Button variant="danger" onClick={onConfirm}>
-          Delete
-        </Button>
-      </div>
+      {task && (
+        <>
+          <h2 id={headingId} className={styles.heading}>
+            Delete task
+          </h2>
+          <p id={textId} className={styles.text}>
+            Delete "{task.title}"? This cannot be undone.
+          </p>
+          <div className={styles.actions}>
+            {/* Cancel comes first so the dialog's initial focus lands on it, not on Delete. */}
+            <Button onClick={onClose}>Cancel</Button>
+            <Button variant="danger" onClick={onConfirm}>
+              Delete
+            </Button>
+          </div>
+        </>
+      )}
     </Dialog>
   )
 }

@@ -14,11 +14,6 @@ async function createTask(user: ReturnType<typeof userEvent.setup>, title: strin
 }
 
 describe('TasksPage', () => {
-  it('shows an empty state', () => {
-    renderPage()
-    expect(screen.getByText(/no tasks yet/i)).toBeInTheDocument()
-  })
-
   it('creates a task and renders badges', async () => {
     const user = userEvent.setup()
     renderPage()

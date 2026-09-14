@@ -30,7 +30,7 @@ export function Dialog({ open, onClose, labelledBy, describedBy, role, children 
       aria-describedby={describedBy}
       onClose={onClose}
     >
-      <div className={styles.content}>{children}</div>
+      {children}
     </dialog>
   )
 }

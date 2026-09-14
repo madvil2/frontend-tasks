@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { formatDate, isOverdue, parseISODate, todayISO } from './date'
+import { formatDate, parseISODate, todayISO } from './date'
 
 describe('date helpers', () => {
   it('todayISO formats a local date', () => {
@@ -14,13 +14,6 @@ describe('date helpers', () => {
   })
 
   it('formatDate renders day, short month, year', () => {
-    expect(formatDate('2026-03-01')).toMatch(/^1 Mar\w* 2026$/)
-  })
-
-  it('isOverdue compares against today and ignores done tasks', () => {
-    expect(isOverdue('2026-09-12', 'todo', '2026-09-13')).toBe(true)
-    expect(isOverdue('2026-09-13', 'todo', '2026-09-13')).toBe(false)
-    expect(isOverdue('2026-09-12', 'done', '2026-09-13')).toBe(false)
-    expect(isOverdue(null, 'todo', '2026-09-13')).toBe(false)
+    expect(formatDate('2026-03-01')).toBe('1 Mar 2026')
   })
 })

@@ -37,3 +37,8 @@
   text-align: center;
   color: var(--color-text-muted);
 }
+
+.list {
+  display: grid;
+  gap: var(--space-3);
+}

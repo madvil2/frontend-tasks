@@ -20,11 +20,3 @@ const formatter = new Intl.DateTimeFormat('en-GB', {
 export function formatDate(iso: string): string {
   return formatter.format(parseISODate(iso))
 }
-
-export function isOverdue(
-  dueDate: string | null,
-  status: string,
-  today: string = todayISO(),
-): boolean {
-  return dueDate !== null && status !== 'done' && dueDate < today
-}

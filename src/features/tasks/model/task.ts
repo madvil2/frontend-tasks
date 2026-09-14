@@ -1,3 +1,5 @@
+import { todayISO } from '../../../shared/lib/date'
+
 export const TASK_STATUSES = ['todo', 'in_progress', 'done'] as const
 export type TaskStatus = (typeof TASK_STATUSES)[number]
 
@@ -53,4 +55,8 @@ export function isTask(value: unknown): value is Task {
     (value.dueDate === null || typeof value.dueDate === 'string') &&
     typeof value.createdAt === 'string'
   )
+}
+
+export function isOverdue(task: Task, today: string = todayISO()): boolean {
+  return task.dueDate !== null && task.status !== 'done' && task.dueDate < today
 }

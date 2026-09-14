@@ -1,27 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
-import {
-  DeleteTaskDialog,
-  type Task,
-  TaskFormDialog,
-  type TaskInput,
-  TaskList,
-  TasksProvider,
-  useTasks,
-} from '../../features/tasks'
+import type { Task, TaskInput } from '../../features/tasks/model/task'
+import { useTasksState } from '../../features/tasks/model/useTasksState'
+import { DeleteTaskDialog } from '../../features/tasks/ui/DeleteTaskDialog/DeleteTaskDialog'
+import { TaskCard } from '../../features/tasks/ui/TaskCard/TaskCard'
+import { TaskFormDialog } from '../../features/tasks/ui/TaskFormDialog/TaskFormDialog'
 import { Button } from '../../shared/ui/Button/Button'
 import styles from './TasksPage.module.scss'
 
 export function TasksPage() {
-  return (
-    <TasksProvider>
-      <TasksView />
-    </TasksProvider>
-  )
-}
-
-function TasksView() {
-  const { tasks, addTask, updateTask, removeTask } = useTasks()
+  const { tasks, addTask, updateTask, removeTask } = useTasksState()
   const [formOpen, setFormOpen] = useState(false)
   const [editing, setEditing] = useState<Task | null>(null)
   const [deleting, setDeleting] = useState<Task | null>(null)
@@ -29,6 +17,8 @@ function TasksView() {
   const addButtonRef = useRef<HTMLButtonElement>(null)
   const focusAddAfterClose = useRef(false)
 
+  // The Delete button that opened the dialog is gone with the task, so the browser has
+  // nothing to restore focus to; move it to "Add task" once the dialog has closed.
   useEffect(() => {
     if (deleting === null && focusAddAfterClose.current) {
       focusAddAfterClose.current = false
@@ -74,9 +64,13 @@ function TasksView() {
       </div>
 
       {tasks.length === 0 ? (
-        <p className={styles.empty}>No tasks yet. Use “Add task” to create the first one.</p>
+        <p className={styles.empty}>No tasks yet. Use "Add task" to create the first one.</p>
       ) : (
-        <TaskList tasks={tasks} onEdit={openEdit} onDelete={setDeleting} />
+        <ul className={styles.list} aria-label="Tasks">
+          {tasks.map((task) => (
+            <TaskCard key={task.id} task={task} onEdit={openEdit} onDelete={setDeleting} />
+          ))}
+        </ul>
       )}
 
       <TaskFormDialog

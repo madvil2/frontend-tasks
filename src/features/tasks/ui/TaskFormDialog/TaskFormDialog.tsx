@@ -2,14 +2,14 @@ import { type FormEvent, useId, useRef, useState } from 'react'
 import { Button } from '../../../../shared/ui/Button/Button'
 import { Dialog } from '../../../../shared/ui/Dialog/Dialog'
 import {
-  isTaskPriority,
-  isTaskStatus,
   PRIORITY_LABELS,
   STATUS_LABELS,
   TASK_PRIORITIES,
   TASK_STATUSES,
   type Task,
   type TaskInput,
+  type TaskPriority,
+  type TaskStatus,
 } from '../../model/task'
 import styles from './TaskFormDialog.module.scss'
 
@@ -28,9 +28,7 @@ export function TaskFormDialog({ open, task, onSubmit, onClose }: TaskFormDialog
       <h2 id={headingId} className={styles.heading}>
         {task ? 'Edit task' : 'New task'}
       </h2>
-      {open && (
-        <TaskForm key={task?.id ?? 'new'} task={task} onSubmit={onSubmit} onCancel={onClose} />
-      )}
+      {open && <TaskForm task={task} onSubmit={onSubmit} onCancel={onClose} />}
     </Dialog>
   )
 }
@@ -41,7 +39,7 @@ interface TaskFormProps {
   onCancel: () => void
 }
 
-/** Uncontrolled form; remounted per task via `key` so defaults reset between create and edit. */
+/** Uncontrolled form; it is only mounted while the dialog is open, so defaults reset on every open. */
 function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
   const id = useId()
   const titleRef = useRef<HTMLInputElement>(null)
@@ -56,14 +54,13 @@ function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
       titleRef.current?.focus()
       return
     }
-    const status = data.get('status')
-    const priority = data.get('priority')
     const dueDate = String(data.get('dueDate') ?? '')
     onSubmit({
       title,
       description: String(data.get('description') ?? '').trim(),
-      status: isTaskStatus(status) ? status : 'todo',
-      priority: isTaskPriority(priority) ? priority : 'medium',
+      // The select and radios are rendered from TASK_STATUSES / TASK_PRIORITIES.
+      status: data.get('status') as TaskStatus,
+      priority: data.get('priority') as TaskPriority,
       dueDate: dueDate === '' ? null : dueDate,
     })
   }

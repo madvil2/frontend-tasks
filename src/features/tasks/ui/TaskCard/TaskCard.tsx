@@ -1,6 +1,6 @@
-import { formatDate, isOverdue } from '../../../../shared/lib/date'
+import { formatDate } from '../../../../shared/lib/date'
 import { Button } from '../../../../shared/ui/Button/Button'
-import type { Task } from '../../model/task'
+import { isOverdue, type Task } from '../../model/task'
 import { PriorityBadge } from '../badges/PriorityBadge'
 import { StatusBadge } from '../badges/StatusBadge'
 import styles from './TaskCard.module.scss'
@@ -12,7 +12,7 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
-  const overdue = isOverdue(task.dueDate, task.status)
+  const overdue = isOverdue(task)
   return (
     <li className={styles.card}>
       <div className={styles.header}>
