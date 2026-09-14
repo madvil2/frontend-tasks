@@ -12,7 +12,6 @@ $priority: (
   'high': (#fee2e2, #991b1b),
 );
 
-// Status: a coloured dot followed by the label.
 .status {
   display: inline-flex;
   align-items: center;
@@ -31,7 +30,6 @@ $priority: (
   background: currentcolor;
 }
 
-// Priority: a small tinted chip.
 .chip {
   display: inline-flex;
   align-items: center;
@@ -43,7 +41,7 @@ $priority: (
   white-space: nowrap;
 }
 
-// One class per value; looked up dynamically as styles[value].
+// Looked up dynamically as styles[value].
 @each $name, $color in $status {
   .#{$name} .dot {
     color: $color;

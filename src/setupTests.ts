@@ -3,8 +3,7 @@ import { cleanup } from '@testing-library/react'
 import { afterEach, beforeEach } from 'vitest'
 import { mockMatchMedia } from './test/mockMatchMedia'
 
-// jsdom implements neither <dialog> modal methods nor matchMedia. The polyfill only toggles
-// the `open` attribute, so focus behaviour of real modal dialogs is not covered by the tests.
+// jsdom has neither <dialog> modal methods nor matchMedia.
 HTMLDialogElement.prototype.showModal = function showModal() {
   this.setAttribute('open', '')
 }
@@ -13,7 +12,7 @@ HTMLDialogElement.prototype.close = function close() {
   this.dispatchEvent(new Event('close'))
 }
 
-// Without vitest globals, Testing Library cannot register its own afterEach cleanup.
+// No vitest globals, so Testing Library cannot register cleanup itself.
 afterEach(cleanup)
 
 beforeEach(() => {

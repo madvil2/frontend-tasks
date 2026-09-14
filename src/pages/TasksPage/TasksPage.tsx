@@ -17,8 +17,7 @@ export function TasksPage() {
   const addButtonRef = useRef<HTMLButtonElement>(null)
   const focusAddAfterClose = useRef(false)
 
-  // The Delete button that opened the dialog is gone with the task, so the browser has
-  // nothing to restore focus to; move it to "Add task" once the dialog has closed.
+  // The Delete button that opened the dialog is gone with the task; restore focus ourselves.
   useEffect(() => {
     if (deleting === null && focusAddAfterClose.current) {
       focusAddAfterClose.current = false

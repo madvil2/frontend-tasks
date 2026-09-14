@@ -39,7 +39,7 @@ interface TaskFormProps {
   onCancel: () => void
 }
 
-/** Uncontrolled form; it is only mounted while the dialog is open, so defaults reset on every open. */
+/** Uncontrolled; mounted only while the dialog is open, so defaults reset each time. */
 function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
   const id = useId()
   const titleRef = useRef<HTMLInputElement>(null)
@@ -58,7 +58,7 @@ function TaskForm({ task, onSubmit, onCancel }: TaskFormProps) {
     onSubmit({
       title,
       description: String(data.get('description') ?? '').trim(),
-      // The select and radios are rendered from TASK_STATUSES / TASK_PRIORITIES.
+      // Values come from TASK_STATUSES / TASK_PRIORITIES.
       status: data.get('status') as TaskStatus,
       priority: data.get('priority') as TaskPriority,
       dueDate: dueDate === '' ? null : dueDate,

@@ -85,7 +85,7 @@ textarea.control {
   gap: var(--space-2);
 }
 
-// Native radios rendered as selectable chips; the input stays in the DOM for a11y and forms.
+// Radios styled as chips; the input stays in the DOM.
 .radio {
   position: relative;
   display: inline-flex;

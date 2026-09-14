@@ -31,7 +31,7 @@ export function DeleteTaskDialog({ task, onConfirm, onClose }: DeleteTaskDialogP
             Delete "{task.title}"? This cannot be undone.
           </p>
           <div className={styles.actions}>
-            {/* Cancel comes first so the dialog's initial focus lands on it, not on Delete. */}
+            {/* Cancel first: showModal() focuses the first control. */}
             <Button onClick={onClose}>Cancel</Button>
             <Button variant="danger" onClick={onConfirm}>
               Delete

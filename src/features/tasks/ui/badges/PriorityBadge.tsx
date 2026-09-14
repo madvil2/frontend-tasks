@@ -1,7 +1,7 @@
 import { PRIORITY_LABELS, type TaskPriority } from '@/features/tasks/model/task'
 import styles from './badge.module.scss'
 
-/** "Medium" alone is ambiguous for screen readers, so the word "priority" is added visually hidden. */
+/** "Medium" alone is ambiguous for screen readers. */
 export function PriorityBadge({ priority }: { priority: TaskPriority }) {
   return (
     <span className={`${styles.chip} ${styles[priority]}`}>

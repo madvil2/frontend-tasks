@@ -67,8 +67,7 @@
   color: var(--color-danger);
 }
 
-// Touch devices: Edit/Delete sit at the end of the meta row. Pointer devices: pinned to the
-// top-right corner and revealed on hover or focus, so the card keeps a calm resting state.
+// Touch: Edit/Delete end the meta row. Pointer: pinned top-right, shown on hover/focus.
 .actions {
   display: flex;
   flex: none;

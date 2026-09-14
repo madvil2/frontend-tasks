@@ -33,7 +33,7 @@ export function CustomerAreaLayout() {
         navId={NAV_ID}
       />
       <NavMenu id={NAV_ID} hidden={!isDesktop && !menuOpen} onNavigate={() => setOpen(false)} />
-      {/* The open overlay covers the content, so keep it out of the tab order too. */}
+      {/* Covered by the open overlay, so out of the tab order too. */}
       <main className={styles.main} inert={menuOpen}>
         <Outlet />
       </main>
