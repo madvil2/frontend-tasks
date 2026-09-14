@@ -16,7 +16,7 @@ pnpm check      # typecheck + lint + tests
 pnpm build
 ```
 
-Node 20+ and pnpm (see `packageManager` in `package.json`).
+Node 24 (see `.nvmrc`) and pnpm (see `packageManager` in `package.json`).
 
 ## Stack
 
@@ -24,11 +24,11 @@ React 19, TypeScript, Vite, react-router, SCSS Modules, Biome, Vitest + Testing 
 
 ## Decisions
 
-- **Structure:** `pages` → `features` / `layouts` / `shared`. `features/tasks` exposes its public API through `index.ts`. Each component sits in its own folder next to its styles and tests.
-- **State:** `useReducer` + context. The reducer and the storage layer are pure and unit-tested. On load every stored item is validated; invalid items are dropped instead of wiping the store. Tasks are listed newest first.
-- **Dialogs:** native `<dialog>` (modal focus handling and Esc come from the browser). The create/edit form is uncontrolled, read through `FormData`, and remounted per task via `key`.
+- **Structure:** `pages` → `features` / `layouts` / `shared`, imported through the `@/` alias. Each component sits in its own folder next to its stylesheet; behaviour is tested at the page level, small units directly.
+- **State:** one `useReducer` hook, no context (there is a single consumer). The reducer and the storage layer are pure and unit-tested. On load every stored item is validated; invalid items are dropped instead of wiping the store. Tasks are listed newest first.
+- **Dialogs:** native `<dialog>` (modal focus handling and Esc come from the browser). The create/edit form is uncontrolled, read through `FormData`, and only mounted while the dialog is open.
 - **Dates:** stored as `YYYY-MM-DD` and parsed as local dates. `new Date('YYYY-MM-DD')` parses as UTC and shifts a day in negative offsets.
-- **Breakpoints:** defined once in `src/app/styles/breakpoints.scss` and used mobile-first via `@include bp.up(...)`. Below 992px the menu visibility is React state; from 992px up it is always visible.
+- **Breakpoints:** defined in `src/app/styles/breakpoints.scss` and used mobile-first via `@include bp.up(...)`. Below 992px the menu is React state (so the page behind the open overlay can be made `inert`); from 992px up it is always visible. Checked in Chrome and Safari at 320, 400, 600, 800, 1100 and 1400px against the mockups.
 
 ## Assumptions from the mockups
 
@@ -39,5 +39,5 @@ React 19, TypeScript, Vite, react-router, SCSS Modules, Biome, Vitest + Testing 
 ## Known limitations
 
 - No sync between tabs (no `storage` event listener).
-- Menu items other than "Persönliche Daten" are placeholders; they only close the menu.
+- Menu items other than "Persönliche Daten" are placeholders; they only close the menu, and from 992px up there is nothing to close.
 - No dark mode.

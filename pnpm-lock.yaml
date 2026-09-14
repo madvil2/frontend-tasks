@@ -21,9 +21,6 @@ importers:
       '@biomejs/biome':
         specifier: ^2.5.13
         version: 2.5.13
-      '@testing-library/dom':
-        specifier: ^10.4.2
-        version: 10.4.2
       '@testing-library/jest-dom':
         specifier: ^7.0.1
         version: 7.0.1(@testing-library/dom@10.4.2)(vitest@5.0.0(@types/node@24.13.4)(jsdom@30.0.1)(vite@8.3.0(@types/node@24.13.4)(sass-embedded@1.104.1)(sass@1.104.1)))
@@ -33,9 +30,6 @@ importers:
       '@testing-library/user-event':
         specifier: ^14.6.7
         version: 14.6.7(@testing-library/dom@10.4.2)
-      '@types/node':
-        specifier: ^24.13.3
-        version: 24.13.4
       '@types/react':
         specifier: ^19.2.18
         version: 19.3.0
@@ -1362,6 +1356,7 @@ snapshots:
   '@types/node@24.13.4':
     dependencies:
       undici-types: 7.18.2
+    optional: true
 
   '@types/react-dom@19.3.0(@types/react@19.3.0)':
     dependencies:
@@ -1801,7 +1796,8 @@ snapshots:
 
   typescript@6.0.3: {}
 
-  undici-types@7.18.2: {}
+  undici-types@7.18.2:
+    optional: true
 
   undici@8.10.2: {}
 

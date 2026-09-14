@@ -1,16 +1,14 @@
 {
   "name": "frontend-tasks",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest",
     "lint": "biome check .",
-    "format": "biome check --write .",
+    "fix": "biome check --write .",
     "typecheck": "tsc -b",
     "check": "pnpm typecheck && pnpm lint && pnpm test"
   },
@@ -21,11 +19,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.13",
-    "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
-    "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
@@ -36,7 +32,7 @@
     "vitest": "^5.0.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "packageManager": "pnpm@10.33.0"
 }
