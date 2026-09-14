@@ -16,7 +16,7 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   font-weight: 500;
   overflow-wrap: anywhere;
 }
@@ -42,7 +42,7 @@
 }
 
 .due {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
 

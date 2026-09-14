@@ -19,7 +19,7 @@
   padding: 0 var(--space-5);
   border: 0;
   background: none;
-  font-size: 17px;
+  font-size: var(--font-size-md);
   color: var(--color-text-muted);
   text-align: left;
   text-decoration: none;
@@ -27,6 +27,10 @@
 
   &:hover {
     color: var(--color-text);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: color 150ms ease;
   }
 
   &:focus-visible {
@@ -40,12 +44,6 @@
     @include bp.up(wide) {
       box-shadow: inset 3px 0 0 var(--color-accent);
     }
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .link {
-    transition: color 150ms ease;
   }
 }
 

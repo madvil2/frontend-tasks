@@ -9,11 +9,6 @@
   border-radius: var(--radius);
   font-weight: 500;
   cursor: pointer;
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: default;
-  }
 }
 
 .primary {
@@ -21,7 +16,7 @@
   border-color: var(--color-accent-strong);
   color: #fff;
 
-  &:hover:not(:disabled) {
+  &:hover {
     filter: brightness(0.95);
   }
 }
@@ -31,7 +26,7 @@
   border-color: var(--color-border);
   color: var(--color-text);
 
-  &:hover:not(:disabled) {
+  &:hover {
     background: var(--color-surface);
   }
 }
@@ -41,7 +36,7 @@
   border-color: var(--color-danger);
   color: #fff;
 
-  &:hover:not(:disabled) {
+  &:hover {
     filter: brightness(0.95);
   }
 }
@@ -52,7 +47,7 @@
   background: transparent;
   color: var(--color-text-muted);
 
-  &:hover:not(:disabled) {
+  &:hover {
     color: var(--color-text);
     background: var(--color-surface);
   }

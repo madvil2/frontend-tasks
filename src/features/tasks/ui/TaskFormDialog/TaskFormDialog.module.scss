@@ -1,7 +1,7 @@
 @use 'breakpoints' as bp;
 
 .heading {
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   font-weight: 500;
   margin-bottom: var(--space-4);
 }
@@ -37,7 +37,7 @@ textarea.control {
 }
 
 .error {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-danger);
 }
 

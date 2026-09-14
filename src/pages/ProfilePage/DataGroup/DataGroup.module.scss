@@ -1,15 +1,12 @@
 @use 'breakpoints' as bp;
 
-.group {
+.group:not(:last-child) {
   @include bp.up(tablet) {
-    &:not(:last-child) {
-      margin-bottom: var(--space-4);
-    }
+    margin-bottom: var(--space-4);
   }
 }
 
 .row {
-  min-width: 0;
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-border);
 
